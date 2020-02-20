@@ -1,18 +1,20 @@
 <?php
 
 
-class Articles
+class Admin extends Articles
 {
+    protected $mysqli;
+
     public function __construct(Db $dbObj)
     {
 
         $this->mysqli = $dbObj->db;
     }
 
-    public function getArticles()
+    public function getAdmin()
     {
 
-        $result = $this->mysqli->query("select title, insert_date, content from articles where 1");
+        $result = $this->mysqli->query("select username, password from admin where");
         $res = $result->fetch_assoc();
         return $res;
     }

@@ -1,20 +1,20 @@
 <?php
 
 
-class Admin
+class Comments
 {
-    protected $mysqli;
-
     public function __construct(Db $dbObj)
     {
 
         $this->mysqli = $dbObj->db;
     }
 
-    public function getAdmin()
+    public function getArticles()
     {
 
-        $result = $this->mysqli->query("select username, password from admin where");
+        $result = $this->mysqli->query("select username, insert_date, content from comments where 1");
+
+
         $res = $result->fetch_assoc();
         return $res;
     }

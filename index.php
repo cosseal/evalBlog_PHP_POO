@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,28 +18,52 @@
 </head>
 <body>
 
-    <header>
+<header>
 
-    </header>
-    <section>
-        <div class="container">
-            <div> <h2>Présentation</h2> </div>
+</header>
 
-            <h3>Les articles</h3>
+<section>
+    <div class="container?controller=''&action=''">
+        <div> <h2>Présentation</h2> </div>
+
+        <div class=?controller=singleArticle&action=display></div>
+
 
 
 
 
         </div>
 
-    </section>
-    <footer></footer>
-
-</div>
 
 
+</section>
 
-<script src="jquery.js"></script>
-<script src="script.js"></script>
+<footer></footer>
+
 </body>
-</html>
+
+<?php
+require "model/Db.php";
+$db = new Db();
+require "model/Articles.php";
+
+$controller = $_GET["controller"];
+$action = $_GET["action"];
+
+switch($controller){
+    case "singleArticle":
+
+
+        break;
+
+    default:
+        require "controller/ArticlesController.php";
+        $controller = new ArticlesController($db);
+        $controller->articlesList();
+
+    break;
+}
+
+
+
+

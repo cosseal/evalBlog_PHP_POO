@@ -14,7 +14,7 @@ class Db
             echo "Echec lors de la connexion à MySQL : (" . $this->db->connect_errno . ") " . $this->db->connect_error;
         }
 
-        return $this->db;
+
 
 
 }

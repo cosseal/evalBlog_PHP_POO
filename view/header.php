@@ -18,11 +18,11 @@
 <header>
     <nav class="nav">
         <ul class="menu_flex">
-            <li class="flex_items logo"><img src="../img/banner-rastatroll-1.png" height="190" width="180" alt="berrTroll"></li>
-            <li class="flex_items menu-item accueil"><a href="Accueil.html" ><span class="icon"><i class="fas fa-home"></i></span>
-                    <span>Accueil</span></a></li>
-            <li class="flex_items menu-item formation"><a href="Formation.css" ><span class="icon"><i class="fas fa-laptop-code"></i></span>
-                    <span>Formation</span></a></li>
+            <li class="flex_items logo"><img src="../img/banner-rastatroll-1.png" height="190" width="180" alt="beerTroll"></li>
+            <li class="flex_items menu-item accueil"><a href="#" >
+                    Accueil</a></li>
+            <li class="flex_items menu-item formation"><a href="#" >
+                    Articles</a></li>
         </ul>
     </nav>
 
