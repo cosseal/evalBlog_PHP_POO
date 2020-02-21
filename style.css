@@ -18,15 +18,20 @@ header {
     color: #2664ff;
 }
 
+nav {
+    width: 90%;
+
+    margin:40px auto;
+}
 
 .nav ul {
     list-style:none;
-    width: 80%;
+    width: 100%;
     padding-left: 0;
     z-index: 3;
 }
 
-.nav a {
+.nav h1, .nav h2 {
     text-align:center;
     text-decoration: none;
     color:white;
@@ -37,16 +42,16 @@ header {
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    height: 50px;
+    height: 190px;
 }
 
-.nav a:hover {
+.nav h1, .nav h2:hover {
     color: #fefefe;
 }
 
 
 .flex_items {
-    width: 10%;
+    width:100%;
     text-align: center;
     font-weight: bold;
     color:#fefefe;
@@ -58,14 +63,20 @@ header {
 }
 
 .flex_items.logo {
-    background: transparent;
-    align-items: flex-start;
+    background: #40178f;
+    height: 190px;
 }
 .flex_items.accueil {
+
     background: #f28b0c ;
 }
 .flex_items.formation {
     background: #f25f29 ;
+}
+
+section{
+    width: 80%;
+    min-height: 50%;
 }
 
 
@@ -139,18 +150,7 @@ footer p > a, #plan_site > a {
     section {
         width: 100%;
     }
-    #bloc_gauche {
-        float: left;
-        width: 63%;
-        margin: 0;
-        padding-left: 1em;
-        padding-bottom: 1em;
-    }
-    section aside {
-        width: 37%;
-        float: right;
-        padding: 0;
-    }
+
 
     footer {
         width: 130%;}
@@ -178,19 +178,6 @@ footer p > a, #plan_site > a {
         padding-left: 5em;
     }
 
-    #bloc_gauche {
-        float: right;
-        width: 100%;
-        margin: 0;
-        padding-left: 1em;
-        padding-bottom: 1em;
-    }
-
-    section aside {
-        width: 100%;
-        padding: 0;
-        margin-top: 0;
-    }
 
     body {
         position: relative;

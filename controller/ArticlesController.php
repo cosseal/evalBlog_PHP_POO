@@ -17,5 +17,11 @@ class ArticlesController
         include "view/articlesList.php";
     }
 
+    public function singleArticle()
+    {
+        $singleArticle= $this->model->getOneArticle();
+        include "view/singleArticle.php";
+    }
+
 
 }

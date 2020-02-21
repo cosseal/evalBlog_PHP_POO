@@ -5,6 +5,7 @@ class Articles
 {
 
     private $article;
+    private $id;
     public function __construct(Db $dbObj)
     {
         $this->mysqli = $dbObj->db;
@@ -14,7 +15,7 @@ class Articles
 
     public function getArticles()
     {
-        $result = $this->mysqli->query("select title, insert_date, content from articles where 1");
+        $result = $this->mysqli->query("SELECT id,title, insert_date, content FROM articles WHERE 1");
 
         $tbl = [];
         while( $res = $result->fetch_assoc())
@@ -25,27 +26,39 @@ class Articles
         return $tbl;
     }
 
+    public function id($id)
+    {
+        $this->id=$id;
+    }
+
+    public function getOneArticle()
+    {
+        $result = $this->mysqli->prepare("SELECT id,title, insert_date, content FROM articles WHERE id='?'");
+       $result->bind_param("isis",$this->id);
+
+
+        return $result;
+    }
+
     public function setArticles($article)
     {
         $this->article = $article;
     }
-
-
-    public function writeArticle($title,$content)
-    {
-
-        $stmt= "INSERT INTO articles VALUES(".$title.','.$content.") ";
-    }
-
-    public function updateArticle()
-    {
-
-    }
-
-    public function deleteArticle()
-    {
-
-    }
+//
+//
+//    public function AdminArticle()
+//    {
+//
+//        $stmt= "INSERT INTO articles VALUES(".$title.','.$content.") ";
+//    }
+//
+//
+//
+//
+//    public function deleteArticle()
+//    {
+//    $stmt = "DELETE FROM articles WHERE id=''";
+//    }
 }
 
 

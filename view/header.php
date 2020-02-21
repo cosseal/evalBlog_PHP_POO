@@ -1,33 +1,18 @@
 <?php
-
+    //echo __DIR__;
+    $imgUrl = "http://" . $_SERVER['HTTP_HOST'] . "/evalBlog_PHP_POO/img/";
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/5c87734899.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/style.css">
-
-
-</head>
-<body>
-
-<header>
     <nav class="nav">
         <ul class="menu_flex">
-            <li class="flex_items logo"><img src="../img/banner-rastatroll-1.png" height="190" width="180" alt="beerTroll"></li>
-            <li class="flex_items menu-item accueil"><a href="#" >
-                    Accueil</a></li>
-            <li class="flex_items menu-item formation"><a href="#" >
-                    Articles</a></li>
+            <li class="flex_items logo"><img src="<?= $imgUrl ?>banner-rastatroll-1.png" height="190" width="180" alt="beerTroll"></li>
+            <li class="flex_items menu-item accueil">
+                <h1>THE BLOG</h1></li>
+            <li class="flex_items menu-item formation"><h2>
+                    Des histoires de Trolls</h2></li>
         </ul>
     </nav>
 
-    <h1>!!!!!The Blog!!!!!</h1>
-    <h2>Des histoires de Trolls</h2>
-   <div><img src="../img/trolls.jpg"  alt="warning:Troll"></div>
 
-</header>
+   <div><img src="<?= $imgUrl ?>trolls.jpg"  alt="warning:Troll"></div>
+
+

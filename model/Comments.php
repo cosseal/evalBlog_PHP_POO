@@ -3,19 +3,25 @@
 
 class Comments
 {
+
     public function __construct(Db $dbObj)
     {
-
         $this->mysqli = $dbObj->db;
+
     }
 
-    public function getArticles()
+    public function getComments()
     {
 
-        $result = $this->mysqli->query("select username, insert_date, content from comments where 1");
+        $result = $this->mysqli->query("SELECT username, insert_date, content FROM comments
+        LEFT JOIN articles WHERE comments.articles_id ='. $id . '");
 
+        $tbl = [];
+        while($res = $result->fetch_assoc())
+        {
+            $tbl[] = $res;
+        }
+        return $tbl;
 
-        $res = $result->fetch_assoc();
-        return $res;
     }
 }
