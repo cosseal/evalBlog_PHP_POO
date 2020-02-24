@@ -9,8 +9,7 @@ class Articles
     public function __construct(Db $dbObj)
     {
         $this->mysqli = $dbObj->db;
-        //$this->getArticles();
-        //$this->setArticles();
+
     }
 
     public function getArticles()
@@ -26,18 +25,21 @@ class Articles
         return $tbl;
     }
 
-    public function id($id)
+    public function setId($id)
     {
-        $this->id=$id;
+      $this->id = $id;
     }
 
     public function getOneArticle()
     {
-        $result = $this->mysqli->prepare("SELECT id,title, insert_date, content FROM articles WHERE id='?'");
-       $result->bind_param("isis",$this->id);
+       $id=$_GET['id'];
+       $stmt = $this->mysqli->query("SELECT id,title, insert_date, content FROM articles WHERE id='$id'");
 
-
-        return $result;
+       while($res=$stmt->fetch_assoc())
+       {
+           return $res;
+       }
+        return $res;
     }
 
     public function setArticles($article)

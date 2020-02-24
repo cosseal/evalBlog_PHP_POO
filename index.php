@@ -18,63 +18,51 @@
 <body>
 
 <header>
-
 <?php require "view/header.php" ?>
-
 </header>
 
 <section>
-    <div class="container?controller=''&action=''">
-        <div> <h2>Présentation</h2> </div>
 
-        <div class=?controller=singleArticle&action=display></div>
+    <div>
+        <?php
+        require "model/Db.php";
+        $db = new Db();
+        require "model/Articles.php";
+        require "controller/ArticlesController.php";
+        require "model/Comments.php";
+        require "controller/CommentsController.php";
 
+        $controller = $_GET["controller"];
+        $action = $_GET["action"];
+        $id = $_GET["id"];
 
+        switch($controller)
+        {
+            case "singleArticle":
+                if($action == "display")
+                {
+                    $controller = new ArticlesController($db);
+                    $controller->singleArticle();
+//                    $controllerComments = new CommentsController($db);
+//                    $controllerComments->ArticleComment();
+                }
 
+                break;
 
+            default:
+
+                $controller = new ArticlesController($db);
+                $controller->articlesList();
+                break;
+        }
+        ?>
 
     </div>
-
-    <?php
-require "model/Db.php";
-$db = new Db();
-require "model/Articles.php";
-require "controller/ArticlesController.php";
-
-$controller = $_GET["controller"];
-$action = $_GET["action"];
-
-switch($controller){
-    case "singleArticle":
-        if($action="display")
-        {
-            require "model/Comments.php";
-            require "controller/CommentsController.php";
-
-            $controller = new ArticlesController($db);
-            $controller->singleArticle();
-            $controllerComments = new CommentsController($db);
-            $controllerComments->commentsList();
-            include "view/singleArticle.php";
-        }
-
-
-
-        break;
-
-    default:
-
-        $controller = new ArticlesController($db);
-        $controller->articlesList();
-
-    break;
-}
-?>
 
 </section>
 
 <footer>
-    <?Php require "view/footer.php" ?>
+    <?php require "view/footer.php" ?>
 </footer>
 
 </body>

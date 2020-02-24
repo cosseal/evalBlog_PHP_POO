@@ -62,15 +62,15 @@ nav {
     cursor: pointer;
 }
 
-.flex_items.logo {
+.flex_items.logo, .flex_items.disconnect {
     background: #40178f;
     height: 190px;
 }
-.flex_items.accueil {
+.flex_items.accueil, .flex_items.home {
 
     background: #f28b0c ;
 }
-.flex_items.formation {
+.flex_items.formation, .flex_items.comments {
     background: #f25f29 ;
 }
 
