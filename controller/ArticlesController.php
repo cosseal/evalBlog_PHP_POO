@@ -1,6 +1,7 @@
 <?php
 
 
+
 class ArticlesController
 {
     private $model;
@@ -26,7 +27,7 @@ class ArticlesController
         $id = $_GET['id'];
         $this->model->setId($id);
         $singleArticle = $this->model->getOneArticle();
-//        $comments = $this->modelCom->getComments($id);
+        $comments = $this->modelCom->getComments($id);
         include "view/singleArticle.php";
     }
 

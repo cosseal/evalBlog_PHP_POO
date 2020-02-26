@@ -19,9 +19,8 @@ class Comments
 
      public function getComments($id)
     {
-        $idArticle = $_GET["id"];
-        $result = $this->mysqli->query("SELECT username, insert_date, content FROM comments
-        LEFT JOIN articles WHERE comments.articles_id =articles.'.$idArticle . '");
+
+        $result = $this->mysqli->query("SELECT * FROM comments WHERE articles_id = $id");
 
         $tbl = [];
         while($res = $result->fetch_assoc())
@@ -29,6 +28,7 @@ class Comments
             $tbl[] = $res;
         }
         return $tbl;
+//        return json_encode(array_reverse($tbl),JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR);
     }
 
     public function getAll()

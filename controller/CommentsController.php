@@ -13,12 +13,13 @@ class CommentsController
     public function commentsList()
     {
         $commentsList = $this->getAll();
-        include "view/commentsList.php";
+        include "view/admin.php";
     }
 
-    public function ArticleComment()
+    public function articleComment()
     {
-        $ArticleComments = $this->model->getComments($id);
-        include "view/singleArticle.php";
+        $id=$_GET["id"];
+        $articleComments = $this->model->getComments($id);
+        include "view/commentsList.php";
     }
 }

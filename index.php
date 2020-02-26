@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,6 +33,8 @@
         require "controller/ArticlesController.php";
         require "model/Comments.php";
         require "controller/CommentsController.php";
+        require "model/admin.php";
+        require "controller/AdminController.php";
 
         $controller = $_GET["controller"];
         $action = $_GET["action"];
@@ -43,11 +47,14 @@
                 {
                     $controller = new ArticlesController($db);
                     $controller->singleArticle();
-//                    $controllerComments = new CommentsController($db);
-//                    $controllerComments->ArticleComment();
-                }
 
+                    $controllerComments = new CommentsController($db);
+                    $controllerComments->articleComment();
+                }
                 break;
+
+
+
 
             default:
 
@@ -65,6 +72,7 @@
     <?php require "view/footer.php" ?>
 </footer>
 
+<script src="script.js"></script>
 </body>
 
 

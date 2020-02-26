@@ -1,14 +1,15 @@
 
 
 <?php
-foreach($article as $commentsList)
+foreach($articleComments as $articleComment)
 {?>
- <div>
-     <span><?=$commentsList["username"] ?></span>
-<span><?=$commentsList["insert_date"] ?></span>
- <p><?=$commentsList["content"] ?></p>
-</div>
-<hr>
+    <div id="comments">
+        <span><?=$articleComment["username"] ?></span>
+        <span><?=$articleComment["insert_date"] ?></span>
+        <p><?=$articleComment["content"] ?></p>
+        <hr>
+    </div>
+
 
 <?php
 }

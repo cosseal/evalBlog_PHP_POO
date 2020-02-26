@@ -35,32 +35,34 @@ class Articles
        $id=$_GET['id'];
        $stmt = $this->mysqli->query("SELECT id,title, insert_date, content FROM articles WHERE id='$id'");
 
+
        while($res=$stmt->fetch_assoc())
        {
            return $res;
        }
         return $res;
+
     }
 
     public function setArticles($article)
     {
         $this->article = $article;
     }
-//
-//
-//    public function AdminArticle()
-//    {
-//
-//        $stmt= "INSERT INTO articles VALUES(".$title.','.$content.") ";
-//    }
-//
-//
-//
-//
-//    public function deleteArticle()
-//    {
-//    $stmt = "DELETE FROM articles WHERE id=''";
-//    }
+
+    public function AdminArticle($title,$content)
+    {
+        $stmt= $this->mysqli->prepare("INSERT INTO articles (title, content) VALUES(?,?)");
+        $stmt->bind_param("ss", $title,$content);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
+
+    public function deleteArticle()
+    {
+    $stmt = "DELETE FROM articles WHERE id=''";
+    }
 }
 
 
