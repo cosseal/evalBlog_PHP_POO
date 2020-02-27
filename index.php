@@ -50,6 +50,7 @@ ini_set('display_errors', 1);
 
                     $controllerComments = new CommentsController($db);
                     $controllerComments->articleComment();
+                    $controllerComments->commentInsert();
                 }
                 break;
 

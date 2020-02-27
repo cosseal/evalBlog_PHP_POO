@@ -6,7 +6,7 @@
         {
             ?> <li>
 
-            <h3><b><a href="../../admin.php?controller=admin&action=display&id=<?=$article['id']?>"><?= $article['title']; ?></a></b> </h3>
+            <h3><b><a href="admin.php?controller=admin&action=display&id=<?=$article['id']?>"><?= $article['title']; ?></a></b> </h3>
             <?=$article['insert_date'];?>
             <div> <?= $article["content"];?></div>
         </li>

@@ -23,8 +23,15 @@ class CommentsController
         include "view/commentsList.php";
     }
 
-    public function commentinsert()
+
+    public function commentInsert()
     {
+        if(isset($_POST["username"]) && isset($_POST["content"]))
+        {
+            $username = utf8_encode($_POST["username"]);
+            $content = utf8_encode($_POST["content"]);
+            $this->model->insertComment($username,$content);
+        }
 
     }
 }

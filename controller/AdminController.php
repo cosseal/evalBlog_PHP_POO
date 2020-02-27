@@ -32,13 +32,15 @@ class AdminController
 //            exit();
 //        }
 //    }
-//à vérifier car fonctionne pas!
+
     public function write()
     {
-        $artTitle = $_POST["artTitle"];
-        $artContent = $_POST["artContent"];
-        $this->modelArticle->AdminArticle($artTitle,$artContent);
-
+        if(isset($_POST["artTitle"]) && isset($_POST["artContent"]))
+        {
+            $artTitle = utf8_encode($_POST["artTitle"]);
+            $artContent = utf8_encode($_POST["artContent"]);
+            $this->model->AdminArticle($artTitle,$artContent);
+        }
     }
 
     public function artListAdmin()
@@ -60,6 +62,11 @@ class AdminController
         $id=$_GET["id"];
         $this->modelArticle->setId($id);
         $oneArtAdmin = $this->modelArticle->getOneArticle();
+        include "view/admin/oneArtAdmin.php";
+    }
+
+    public function commentsListArtAdmin()
+    {
         $this->articleComment();
         include "view/admin/oneArtAdmin.php";
     }

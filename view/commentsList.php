@@ -9,8 +9,10 @@ foreach($articleComments as $articleComment)
         <p><?=$articleComment["content"] ?></p>
         <hr>
     </div>
-
-
 <?php
 }
 ?>
+<div>
+    <h3>Votre commentaire</h3>
+    <p><?= include "form.php"?></p>
+</div>

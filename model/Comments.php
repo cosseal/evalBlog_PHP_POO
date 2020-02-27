@@ -4,16 +4,10 @@
 class Comments
 {
 
-    private $idArticle;
     public function __construct(Db $dbObj)
     {
         $this->mysqli = $dbObj->db;
 
-    }
-
-    public function setIdArticle($idArticle)
-    {
-        $this->idArticle = $idArticle;
     }
 
 
@@ -34,6 +28,18 @@ class Comments
     public function getAll()
     {
         $stmt = "SELECT comments FROM comments WHERE 1";
+    }
+
+    //ne fonctionne pas...problème d'id?
+
+
+    public function insertComment($username, $content)
+    {
+        $id = $_GET["id"];
+        $stmt= $this->mysqli->prepare("INSERT INTO comments (username,content, articles_id) VALUES(?,?,?)");
+        $stmt->bind_param("ss", $username,$content,$id);
+        $stmt->execute();
+        $stmt->close();
     }
 
 
