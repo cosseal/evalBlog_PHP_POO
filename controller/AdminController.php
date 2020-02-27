@@ -46,6 +46,28 @@ class AdminController
         $artAdminList = $this->modelArticle->getArticles();
         include "view/admin/adminListArt.php";
     }
+    public function articleComment()
+    {
+        $id=$_GET["id"];
+        $this->modelArticle->setId($id);
+        $articleComments = $this->modelCom->getComments($id);
+        include "view/admin/commentsListArtAdmin.php";
+    }
+
+
+    public function oneArtAdmin()
+    {
+        $id=$_GET["id"];
+        $this->modelArticle->setId($id);
+        $oneArtAdmin = $this->modelArticle->getOneArticle();
+        $this->articleComment();
+        include "view/admin/oneArtAdmin.php";
+    }
+
+    public function comListAdmin()
+    {
+
+    }
 
 
 }

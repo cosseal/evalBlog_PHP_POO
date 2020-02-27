@@ -22,4 +22,9 @@ class CommentsController
         $articleComments = $this->model->getComments($id);
         include "view/commentsList.php";
     }
+
+    public function commentinsert()
+    {
+
+    }
 }
