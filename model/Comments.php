@@ -33,11 +33,10 @@ class Comments
     //ne fonctionne pas...problème d'id?
 
 
-    public function insertComment($username, $content)
+    public function insertComment($username,$content,$id)
     {
-        $id = $_GET["id"];
         $stmt= $this->mysqli->prepare("INSERT INTO comments (username,content, articles_id) VALUES(?,?,?)");
-        $stmt->bind_param("ss", $username,$content,$id);
+        $stmt->bind_param("ssi", $username,$content,$id);
         $stmt->execute();
         $stmt->close();
     }

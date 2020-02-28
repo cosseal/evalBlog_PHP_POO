@@ -30,7 +30,10 @@ class CommentsController
         {
             $username = utf8_encode($_POST["username"]);
             $content = utf8_encode($_POST["content"]);
-            $this->model->insertComment($username,$content);
+            $id=$_POST["articleId"];
+            $this->model->insertComment($username,$content,$id);
+            include "view/insertComment";
+
         }
 
     }

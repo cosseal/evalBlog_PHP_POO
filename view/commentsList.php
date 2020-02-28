@@ -14,5 +14,5 @@ foreach($articleComments as $articleComment)
 ?>
 <div>
     <h3>Votre commentaire</h3>
-    <p><?= include "form.php"?></p>
+    <p><?php include "form.php"?></p>
 </div>

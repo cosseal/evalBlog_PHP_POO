@@ -4,34 +4,20 @@
 class AdminController
 {
     private $model;
+    private $modelLogin;
     private $modelArticle;
     private $modelCom;
 
     public function __construct(DB $dbObj)
     {
         $this->model = new Admin($dbObj);
+        $this->modelLogin = new Login($dbObj);
         $this->modelArticle = new Articles($dbObj);
         $this->modelCom = new Comments($dbObj);
     }
 
 
-//    private function authentification ()
-//    {
-//        if(session_status() === PHP_SESSION_NONE)
-//        {
-//            session_start();
-//        }
-//        return true;
-//    }
-//
-//
-//    private function connexion()
-//    {
-//        if(!authentification()){
-//            header("Location:loginAdmin.php");
-//            exit();
-//        }
-//    }
+
 
     public function write()
     {
@@ -76,5 +62,15 @@ class AdminController
 
     }
 
+    public function logout()
+    {
+
+//        if (isset($_GET["off"])) {
+//            session_start();
+//            unset($_SESSION["connecte"]);
+//            header("Location:read.php");
+//        }
+
+    }
 
 }

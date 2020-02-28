@@ -36,9 +36,10 @@ ini_set('display_errors', 1);
         require "model/admin.php";
         require "controller/AdminController.php";
 
-        $controller = $_GET["controller"];
-        $action = $_GET["action"];
-        $id = $_GET["id"];
+        $controller = $_REQUEST["controller"];
+        $action = $_REQUEST["action"];
+        //$id = $_GET["id"];
+
 
         switch($controller)
         {
@@ -50,12 +51,16 @@ ini_set('display_errors', 1);
 
                     $controllerComments = new CommentsController($db);
                     $controllerComments->articleComment();
-                    $controllerComments->commentInsert();
                 }
                 break;
 
-
-
+            case"formComment":
+                if($action == "insertComment")
+                {
+                    $controllerComments = new CommentsController($db);
+                    $controllerComments->commentInsert();
+                }
+                break;
 
             default:
 

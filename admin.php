@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,24 +25,25 @@
         <ul class="menu_flex">
             <li class="flex_items menu-item home"><a href="admin.php?controller=admin&action=artList">Les articles</a></li>
             <li class="flex_items menu-item comments"><a href="admin.php?controller=admin&action=comList">Les commentaires</a> </li>
-            <li class="flex_items menu-item disconnect"><a href="view/Admin/login.php">Se déconnecter</a></li>
+            <li class="flex_items menu-item disconnect"><a href="admin.php?controller=admin&action=logout">Se déconnecter</a></li>
         </ul>
     </nav>
 </header>
 
 
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require "model/Db.php";
 $db = new Db();
+
+require "model/Login.php";
+require "controller/LoginController.php";
 require "model/Articles.php";
 require "model/Comments.php";
 require "model/Admin.php";
 require "controller/AdminController.php";
 
 include "view/admin/form_write.php";
+
 
 $controller = "admin";
 $action = $_REQUEST["action"];
@@ -46,9 +53,16 @@ $id = $_GET["id"];
 
 switch($controller) {
     case "admin":
+        $adminConnection = new LoginController($db);
+        $adminConnection->connexionAdmin();
+        $adminConnection->authentification();
 
         switch ($action)
         {
+            case "adminConnection" :
+                $adminConnection->login();
+                break;
+
             case "writeArticle":
                 $AdminController= new AdminController($db);
                 $AdminController->write();
@@ -70,10 +84,12 @@ switch($controller) {
             case "comList":
                 break;
 
-
-
-
+            case"logout":
+                $controller = new AdminController($db);
+                $controller->logout();
+                break;
         }
+        break;
 }
 
 
